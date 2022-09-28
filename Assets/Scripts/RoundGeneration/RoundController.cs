@@ -5,8 +5,8 @@ using UnityEngine;
 public class RoundController : MonoBehaviour
 {
     [SerializeField] private List<GameObject> listOfEnemy;
-    [SerializeField] private List<GameObject> enemy = new List<GameObject>();
-    [SerializeField] private List<GameObject> enemyInGame = new List<GameObject>();
+    [SerializeField] private List<GameObject> enemy;
+    [SerializeField] private List<GameObject> enemyInGame;
 
     [SerializeField] private List<GameObject> listOfBoss;
     public static Entity bossInGame = null;

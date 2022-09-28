@@ -8,6 +8,11 @@ TagManager:
   - Bullet
   - Enemy
   - Wall
+  - Helm
+  - Chestplate
+  - Gun
+  - Leggings
+  - Boots
   layers:
   - Default
   - TransparentFX
@@ -15,7 +20,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Item
   - 
   - 
   - 

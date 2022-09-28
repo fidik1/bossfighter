@@ -66,7 +66,7 @@ public class ChooseCards : MonoBehaviour
     public void ChooseCard(int numberOfCard)
     {
         Time.timeScale = 1;
-        player.ReloadBuffs(cardActiveBuff[numberOfCard]);
+        player.AddCard(cardActiveBuff[numberOfCard]);
         cardPanel.SetActive(false);
 
         boss = false;

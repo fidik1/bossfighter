@@ -4,10 +4,11 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
-    public RoundController roundController;
+    [SerializeField] private RoundController roundController;
 
-    public EntityStats entityStats;
-    public SpriteRenderer spriteRenderer;
+    [SerializeField] private EntityStats entityStats;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Loot loot;
 
     private Sprite sprite;
     [field: SerializeField] public float maxHealthPoint { get; protected set; }
@@ -20,6 +21,7 @@ public abstract class Entity : MonoBehaviour
 
     public bool isAlive = true;
     public bool isGrounded;
+    public bool isBoss;
 
     public List<ParticleSystem> particleDeath;
     private int currentParticle = 0;
@@ -59,7 +61,8 @@ public abstract class Entity : MonoBehaviour
         particleDeath[currentParticle].Play();
         _ = currentParticle < particleDeath.Count -1 ? currentParticle++ : currentParticle = 0;
 
-        roundController.RemoveEnemy(gameObject);   
+        loot.Drop(transform.position, isBoss);
+        roundController.RemoveEnemy(gameObject);
     }
 
     public void SpendHP(float HP)
