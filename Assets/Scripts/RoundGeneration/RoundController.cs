@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoundController : MonoBehaviour
 {
+    [SerializeField] private new Transform camera;
     [SerializeField] private List<GameObject> listOfEnemy;
     [SerializeField] private List<GameObject> enemy;
     [SerializeField] private List<GameObject> enemyInGame;
@@ -27,12 +28,16 @@ public class RoundController : MonoBehaviour
     {
         currentRound++;
         GenerateEnemy();
-
+        int i = 0;
         foreach (GameObject enemy in enemy)
         {
             GameObject enemyGame = Instantiate(enemy);
             enemyInGame.Add(enemyGame);
-            enemyGame.transform.position = new Vector3(-30, 20);
+            if (i % 2 == 0)
+                enemyGame.transform.position = new Vector3(camera.transform.position.x - 80, -22);
+            else
+                enemyGame.transform.position = new Vector3(camera.transform.position.x + 80, -22);
+            i++;
         }
         if (enemy.Count > countOfEnemy)
         {

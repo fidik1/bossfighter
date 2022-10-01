@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,11 +9,12 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Loot loot;
 
-    private Sprite sprite;
-    [field: SerializeField] public float maxHealthPoint { get; protected set; }
-    [field: SerializeField] public float healthPoint { get; protected set; }
+    [SerializeField] protected Sprite spriteHit;
+    protected Sprite sprite;
+    public float maxHealthPoint { get; protected set; }
+    public float healthPoint { get; protected set; }
     public float damage { get; protected set; }
-    [field: SerializeField] public float attackSpeed { get; protected set; }
+    public float attackSpeed { get; protected set; }
     public float speed { get; protected set; }
     public float jumpForce { get; protected set; }
     public float maxJumps { get; protected set; }

@@ -22,7 +22,7 @@ public class EnemyMushroom : Entity
         if (collider.tag == "Bullet")
         {
             SpendHP(collider.GetComponent<Bullet>().damage);
-            GetComponent<SpriteRenderer>().color = Color.red;
+            GetComponent<SpriteRenderer>().sprite = spriteHit;
         }
     }
 
@@ -35,7 +35,7 @@ public class EnemyMushroom : Entity
 
     IEnumerator ChangeColor()
     {
-        yield return new WaitForSeconds(0.1f);
-        GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.055f);
+        GetComponent<SpriteRenderer>().sprite = sprite;
     }
 }

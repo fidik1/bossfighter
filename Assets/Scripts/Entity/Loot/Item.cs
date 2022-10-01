@@ -27,7 +27,7 @@ public class Item : MonoBehaviour
         {
             if (collision.GetComponent<PlayerInventory>().IsHaveSlots())
             {
-                collision.GetComponent<PlayerInventory>().AddItem(GetComponent<Item>());
+                collision.GetComponent<PlayerInventory>().ControlItem(GetComponent<Item>());
                 transform.position = new Vector3(0, -200);
             }
         }

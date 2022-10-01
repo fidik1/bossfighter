@@ -12,10 +12,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private Transform cells;
     [SerializeField] private Transform cellsBG;
     [SerializeField] private GameObject cell;
-    [SerializeField] private Transform draggingParrent;
     [SerializeField] private Transform equipment;
-
-    [SerializeField] private List<int> index = new List<int>(8);
 
     [SerializeField] private StatsPanel statsPanel;
 
@@ -49,44 +46,39 @@ public class PlayerInventory : MonoBehaviour
         int indent = 0;
         for (int i = 0; i < item.Count; i++)
         {
-            if (!index.Contains(i))
+            GameObject el = Instantiate(cell, cells);
+            el.GetComponent<Cell>().Init(inventory.transform, equipment, cellsBG, statsPanel, GetComponent<PlayerInventory>(), item[i]);
+            el.transform.position = cellsBG.GetChild(i - indent).position;
+            el.transform.SetSiblingIndex(i);
+            el.GetComponent<Cell>().destroy += () =>
             {
-                GameObject el = Instantiate(cell, cells);
-                el.GetComponent<Cell>().Init(draggingParrent, inventory.transform, equipment, cellsBG, statsPanel, GetComponent<PlayerInventory>(), item[i]);
-                el.transform.position = cellsBG.GetChild(i - indent).position;
-                el.transform.SetSiblingIndex(i);
-                el.GetComponent<Cell>().destroy += () =>
-                {
-                    Destroy(item[item.IndexOf(el.GetComponent<Cell>().item)].gameObject);
-                    item.Remove(el.GetComponent<Cell>().item);
-                    Destroy(el);
-                };
-            }
-            else
-                indent++;
+                Destroy(item[item.IndexOf(el.GetComponent<Cell>().item)].gameObject);
+                item.Remove(el.GetComponent<Cell>().item);
+                Destroy(el);
+            };
         }
     }
 
     public void CheckEquip()
     {
-        index.Clear();
         for (int i = 0; i < cells.childCount; i++)
         {
-            if (cells.GetChild(i).GetComponent<Cell>().isEquiped)
-                index.Add(i);
-            else
+            if (!cells.GetChild(i).GetComponent<Cell>().isEquiped)
                 Destroy(cells.GetChild(i).gameObject);
         }
     }
 
-    public void AddItem(Item itemObject)
+    public void ControlItem(Item itemObject, bool isRemove = false)
     {
-        item.Add(itemObject);
+        if (!isRemove)
+            item.Add(itemObject);
+        else
+            item.Remove(itemObject);
     }
 
     public bool IsHaveSlots()
     {
-        if (item.Count - index.Count < 8)
+        if (item.Count < 8)
             return true;
         else
             return false;

@@ -7,7 +7,6 @@ public class Cell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
 {
     public event Action destroy;
 
-    private Transform draggingParent;
     private Transform inventory;
     private Transform equipment;
     private Transform cells;
@@ -19,9 +18,13 @@ public class Cell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
     public bool isEquiped;
     private int indexEquipment;
 
-    public void Init(Transform draggingParent, Transform inventory, Transform equipment, Transform cells, StatsPanel statsPanel, PlayerInventory playerInventory, Item item)
+    int closestIndex = 0;
+    int closestIndexEquipment = 0;
+    bool original = false;
+    float distance = 0;
+
+    public void Init(Transform inventory, Transform equipment, Transform cells, StatsPanel statsPanel, PlayerInventory playerInventory, Item item)
     {
-        this.draggingParent = draggingParent;
         this.inventory = inventory;
         this.equipment = equipment;
         this.cells = cells;
@@ -32,6 +35,7 @@ public class Cell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
         GetComponent<Image>().color = item.color;
         
         PlayerInventory.ClosedInventory += statsPanel.Exit;
+        destroy += Dequip;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -46,7 +50,7 @@ public class Cell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPos = transform.position;
+        startPos = transform.localPosition;
         statsPanel.Exit();
     }
 
@@ -59,10 +63,10 @@ public class Cell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
     {
         if (!In((RectTransform)inventory))
             destroy?.Invoke();
-        int closestIndex = 0;
-        int closestIndexEquipment = 0;
-        bool original = false;
-        float distance = 0;
+        closestIndex = 0;
+        closestIndexEquipment = 0;
+        original = false;
+        distance = 0;
 
         for (int i = 0; i < cells.childCount; i++)
         {
@@ -95,37 +99,45 @@ public class Cell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
 
         transform.position = cells.GetChild(closestIndex).position;
 
+        Dequip();
+
+        if (!original)
+            Equip();
+
+        playerInventory.Render();
+    }
+
+    private void Equip()
+    {
+        if (item.tag == equipment.GetChild(closestIndexEquipment).tag)
+        {
+            for (int i = 0; i < transform.parent.childCount; i++)
+            {
+                if (transform.parent.GetChild(i).position == equipment.GetChild(closestIndexEquipment).position)
+                {
+                    transform.parent.GetChild(i).GetComponent<Cell>().isEquiped = false;
+                    transform.parent.GetChild(i).position = startPos;
+                    break;
+                }
+            }
+
+            transform.position = equipment.GetChild(closestIndexEquipment).position;
+            if (!isEquiped)
+            {
+                equipment.GetChild(closestIndexEquipment).GetComponent<CellEquipment>().Equip(item);
+                indexEquipment = closestIndexEquipment;
+                isEquiped = true;
+            }
+        }
+    }
+
+    private void Dequip()
+    {
         if (isEquiped && original)
         {
             equipment.GetChild(indexEquipment).GetComponent<CellEquipment>().Equip(null);
             isEquiped = false;
         }
-
-        if (!original)
-        {
-            if (item.tag == equipment.GetChild(closestIndexEquipment).tag)
-            {
-                for (int i = 0; i < transform.parent.childCount; i++)
-                {
-                    if (transform.parent.GetChild(i).position == equipment.GetChild(closestIndexEquipment).position)
-                    {
-                        transform.parent.GetChild(i).GetComponent<Cell>().isEquiped = false;
-                        transform.parent.GetChild(i).position = startPos;
-                        break;
-                    }
-                }
-
-                transform.position = equipment.GetChild(closestIndexEquipment).position;
-                if (!isEquiped)
-                {
-                    equipment.GetChild(closestIndexEquipment).GetComponent<CellEquipment>().Equip(item);
-                    indexEquipment = closestIndexEquipment;
-                    isEquiped = true;
-                }
-            }
-        }
-
-        playerInventory.Render();
     }
 
     private bool In(RectTransform originalParent)
@@ -136,5 +148,6 @@ public class Cell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
     private void OnDestroy()
     {
         PlayerInventory.ClosedInventory -= statsPanel.Exit;
+        destroy -= Dequip;
     }
 }

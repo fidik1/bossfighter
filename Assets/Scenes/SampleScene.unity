@@ -708,6 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1408055379}
+  playerInventory: {fileID: 1408055388}
 --- !u!1 &231033117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,7 +1111,7 @@ Transform:
   m_GameObject: {fileID: 274998894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 58.99, y: -106.03458, z: -139.33783}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 28, y: 28, z: 1}
   m_Children: []
   m_Father: {fileID: 978100776}
   m_RootOrder: 1
@@ -1135,11 +1136,11 @@ BoxCollider2D:
     oldSize: {x: 6.4, y: 6.4}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.4, y: 6.4}
+  m_Size: {x: 0.16666667, y: 0.16666667}
   m_EdgeRadius: 0
 --- !u!114 &274998897
 MonoBehaviour:
@@ -1157,9 +1158,7 @@ MonoBehaviour:
   entityStats: {fileID: 11400000, guid: 6e525431562cd454cad0054e7584d2cb, type: 2}
   spriteRenderer: {fileID: 274998899}
   loot: {fileID: 1533232966}
-  <maxHealthPoint>k__BackingField: 0
-  <healthPoint>k__BackingField: 0
-  <attackSpeed>k__BackingField: 0
+  spriteHit: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isAlive: 1
   isGrounded: 0
   isBoss: 0
@@ -1232,7 +1231,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -1727,12 +1726,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1748,7 +1747,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1757,7 +1756,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &440385351
 RectTransform:
@@ -2364,7 +2363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1408055378}
   FollowSpeed: 2
-  yOffset: 5
+  yOffset: 15
 --- !u!1 &532641302
 GameObject:
   m_ObjectHideFlags: 0
@@ -3395,6 +3394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c0f2603bf63074991d7927c2971346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 519420032}
   listOfEnemy:
   - {fileID: 1335514368}
   - {fileID: 274998894}
@@ -3832,7 +3832,7 @@ Transform:
   m_GameObject: {fileID: 816965710}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 37.82, y: -106.104576, z: -139.33783}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 40, y: 40, z: 1}
   m_Children: []
   m_Father: {fileID: 641486858}
   m_RootOrder: 0
@@ -3857,11 +3857,11 @@ BoxCollider2D:
     oldSize: {x: 6.4, y: 6.4}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.4, y: 6.4}
+  m_Size: {x: 0.16666667, y: 0.16666667}
   m_EdgeRadius: 0
 --- !u!114 &816965713
 MonoBehaviour:
@@ -3879,9 +3879,7 @@ MonoBehaviour:
   entityStats: {fileID: 11400000, guid: a287af033ada0724692d9466882dd91b, type: 2}
   spriteRenderer: {fileID: 816965715}
   loot: {fileID: 1533232966}
-  <maxHealthPoint>k__BackingField: 0
-  <healthPoint>k__BackingField: 0
-  <attackSpeed>k__BackingField: 0
+  spriteHit: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isAlive: 1
   isGrounded: 0
   isBoss: 1
@@ -3954,7 +3952,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -4050,6 +4048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1408055379}
+  playerInventory: {fileID: 1408055388}
 --- !u!1001 &857396139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4948,6 +4947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1408055379}
+  playerInventory: {fileID: 1408055388}
 --- !u!1 &1228550606
 GameObject:
   m_ObjectHideFlags: 0
@@ -5243,7 +5243,7 @@ Transform:
   m_GameObject: {fileID: 1291410405}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 52.05, y: -106.03458, z: -139.33783}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 28, y: 28, z: 1}
   m_Children: []
   m_Father: {fileID: 978100776}
   m_RootOrder: 2
@@ -5268,11 +5268,11 @@ BoxCollider2D:
     oldSize: {x: 6.4, y: 6.4}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.4, y: 6.4}
+  m_Size: {x: 0.16666667, y: 0.16666667}
   m_EdgeRadius: 0
 --- !u!114 &1291410408
 MonoBehaviour:
@@ -5290,9 +5290,7 @@ MonoBehaviour:
   entityStats: {fileID: 11400000, guid: aff3aa30c422ce9429b6fb7cab4c33ef, type: 2}
   spriteRenderer: {fileID: 1291410410}
   loot: {fileID: 1533232966}
-  <maxHealthPoint>k__BackingField: 0
-  <healthPoint>k__BackingField: 0
-  <attackSpeed>k__BackingField: 0
+  spriteHit: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isAlive: 1
   isGrounded: 0
   isBoss: 0
@@ -5365,7 +5363,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -5525,11 +5523,11 @@ BoxCollider2D:
     oldSize: {x: 6.4, y: 6.4}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.4, y: 6.4}
+  m_Size: {x: 0.16666667, y: 0.16666667}
   m_EdgeRadius: 0
 --- !u!114 &1335514370
 MonoBehaviour:
@@ -5547,9 +5545,7 @@ MonoBehaviour:
   entityStats: {fileID: 11400000, guid: 1cc2f43966848a6498b51b3681362908, type: 2}
   spriteRenderer: {fileID: 1335514372}
   loot: {fileID: 1533232966}
-  <maxHealthPoint>k__BackingField: 0
-  <healthPoint>k__BackingField: 0
-  <attackSpeed>k__BackingField: 0
+  spriteHit: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isAlive: 1
   isGrounded: 0
   isBoss: 0
@@ -5622,7 +5618,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -5638,7 +5634,7 @@ Transform:
   m_GameObject: {fileID: 1335514368}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 65.78926, y: -106.1, z: -139.33783}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 28, y: 28, z: 1}
   m_Children: []
   m_Father: {fileID: 978100776}
   m_RootOrder: 0
@@ -5821,8 +5817,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372862079}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 63.4, y: 20.1602, z: 0}
-  m_LocalScale: {x: 90, y: 20, z: 1}
+  m_LocalPosition: {x: 250, y: -42.7176, z: 0}
+  m_LocalScale: {x: 215.757, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 1301688318}
   m_RootOrder: 2
@@ -6102,9 +6098,7 @@ MonoBehaviour:
   entityStats: {fileID: 11400000, guid: 9e6288dfc5703e642b789708b1240311, type: 2}
   spriteRenderer: {fileID: 1408055382}
   loot: {fileID: 1533232966}
-  <maxHealthPoint>k__BackingField: 0
-  <healthPoint>k__BackingField: 0
-  <attackSpeed>k__BackingField: 0
+  spriteHit: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isAlive: 1
   isGrounded: 0
   isBoss: 0
@@ -6421,9 +6415,7 @@ MonoBehaviour:
   cells: {fileID: 700343100}
   cellsBG: {fileID: 1528708031}
   cell: {fileID: 8333431688224114904, guid: ac8c7bf56c4828e4c93a439d1feb5810, type: 3}
-  draggingParrent: {fileID: 440385351}
   equipment: {fileID: 437505066}
-  index: 
   statsPanel: {fileID: 675286733}
 --- !u!1 &1414228531
 GameObject:
@@ -6610,7 +6602,7 @@ Transform:
   m_GameObject: {fileID: 1442613372}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 23.9, y: -106.104576, z: -139.33783}
-  m_LocalScale: {x: 0.62, y: 1, z: 1}
+  m_LocalScale: {x: 49.600002, y: 44.999996, z: 1}
   m_Children: []
   m_Father: {fileID: 641486858}
   m_RootOrder: 1
@@ -6635,11 +6627,11 @@ BoxCollider2D:
     oldSize: {x: 12.8, y: 7.2}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.4, y: 6.4}
+  m_Size: {x: 0.16666667, y: 0.16666667}
   m_EdgeRadius: 0
 --- !u!114 &1442613375
 MonoBehaviour:
@@ -6657,9 +6649,7 @@ MonoBehaviour:
   entityStats: {fileID: 11400000, guid: 7e89969e5cf66e94ba8f0b13ac62f74a, type: 2}
   spriteRenderer: {fileID: 1442613377}
   loot: {fileID: 1533232966}
-  <maxHealthPoint>k__BackingField: 0
-  <healthPoint>k__BackingField: 0
-  <attackSpeed>k__BackingField: 0
+  spriteHit: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isAlive: 1
   isGrounded: 0
   isBoss: 1
@@ -6732,7 +6722,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -7654,6 +7644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1408055379}
+  playerInventory: {fileID: 1408055388}
 --- !u!1001 &1658761302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7798,8 +7789,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675648519}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -30.5359, z: 0}
-  m_LocalScale: {x: 211.38026, y: 12.791989, z: 1}
+  m_LocalPosition: {x: 1.5622, y: -52.5359, z: 0}
+  m_LocalScale: {x: 519.10693, y: 56.79117, z: 1}
   m_Children: []
   m_Father: {fileID: 1301688318}
   m_RootOrder: 0
@@ -7856,8 +7847,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676331019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -108.75458, z: 0}
-  m_LocalScale: {x: 211.38026, y: 8.623138, z: 1}
+  m_LocalPosition: {x: 0.3905, y: -108.75458, z: 0}
+  m_LocalScale: {x: 483.9942, y: 8.623138, z: 1}
   m_Children: []
   m_Father: {fileID: 1301688318}
   m_RootOrder: 3
@@ -7968,7 +7959,7 @@ Transform:
   m_GameObject: {fileID: 1724857978}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 31.02, y: -106.104576, z: -139.33783}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 28, y: 28, z: 1}
   m_Children: []
   m_Father: {fileID: 978100776}
   m_RootOrder: 4
@@ -7993,11 +7984,11 @@ BoxCollider2D:
     oldSize: {x: 6.4, y: 6.4}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.4, y: 6.4}
+  m_Size: {x: 0.16666667, y: 0.16666667}
   m_EdgeRadius: 0
 --- !u!114 &1724857981
 MonoBehaviour:
@@ -8015,9 +8006,7 @@ MonoBehaviour:
   entityStats: {fileID: 11400000, guid: 52c1411a765876748a7f44e339172422, type: 2}
   spriteRenderer: {fileID: 1724857983}
   loot: {fileID: 1533232966}
-  <maxHealthPoint>k__BackingField: 0
-  <healthPoint>k__BackingField: 0
-  <attackSpeed>k__BackingField: 0
+  spriteHit: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isAlive: 1
   isGrounded: 0
   isBoss: 0
@@ -8090,7 +8079,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -8333,7 +8322,7 @@ Transform:
   m_GameObject: {fileID: 1822654532}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 45.46, y: -106.03458, z: -139.33783}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 28, y: 28, z: 1}
   m_Children: []
   m_Father: {fileID: 978100776}
   m_RootOrder: 3
@@ -8358,11 +8347,11 @@ BoxCollider2D:
     oldSize: {x: 6.4, y: 6.4}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.4, y: 6.4}
+  m_Size: {x: 0.16666667, y: 0.16666667}
   m_EdgeRadius: 0
 --- !u!114 &1822654535
 MonoBehaviour:
@@ -8380,9 +8369,7 @@ MonoBehaviour:
   entityStats: {fileID: 11400000, guid: f6582244160b97e45ae92ef2d3e1f47c, type: 2}
   spriteRenderer: {fileID: 1822654537}
   loot: {fileID: 1533232966}
-  <maxHealthPoint>k__BackingField: 0
-  <healthPoint>k__BackingField: 0
-  <attackSpeed>k__BackingField: 0
+  spriteHit: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isAlive: 1
   isGrounded: 0
   isBoss: 0
@@ -8455,7 +8442,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -8565,8 +8552,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878745353}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -63.4, y: 20.1602, z: 0}
-  m_LocalScale: {x: 90, y: 20, z: 1}
+  m_LocalPosition: {x: -250, y: -42.7176, z: 0}
+  m_LocalScale: {x: 215.757, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 1301688318}
   m_RootOrder: 1
@@ -9275,6 +9262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1408055379}
+  playerInventory: {fileID: 1408055388}
 --- !u!1 &1978320883
 GameObject:
   m_ObjectHideFlags: 0
