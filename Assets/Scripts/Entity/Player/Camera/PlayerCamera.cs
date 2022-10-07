@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
@@ -9,9 +7,15 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private float FollowSpeed = 2f;
     [SerializeField] private float yOffset = 1f;
 
-    void Update()
+    private void Update()
     {
-        Vector3 newPos = new Vector3(player.transform.position.x, player.transform.position.y + yOffset, -10f);
+        Vector3 newPos = new Vector3(player.transform.position.x, player.transform.position.y + yOffset);
+            
+        if (transform.position.x > 186.5f)
+            newPos = new Vector3(186.5f, player.transform.position.y + yOffset);
+        else if(transform.position.x < -186.5f)
+            newPos = new Vector3(-186.5f, player.transform.position.y + yOffset);
+
         transform.position = Vector3.Slerp(transform.position, newPos, FollowSpeed * Time.deltaTime);
     }
 }

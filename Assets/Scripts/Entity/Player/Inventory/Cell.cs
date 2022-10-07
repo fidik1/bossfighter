@@ -33,7 +33,7 @@ public class Cell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
         this.item = item;
 
         GetComponent<Image>().color = item.color;
-        
+
         PlayerInventory.ClosedInventory += statsPanel.Exit;
         destroy += Dequip;
     }
@@ -67,6 +67,7 @@ public class Cell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
         closestIndexEquipment = 0;
         original = false;
         distance = 0;
+        bool eq = false;
 
         for (int i = 0; i < cells.childCount; i++)
         {
@@ -74,6 +75,7 @@ public class Cell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
             {
                 closestIndex = i;
                 original = true;
+                eq = true;
                 distance = Vector2.Distance(transform.position, cells.GetChild(i).position);
             }
         }
@@ -87,21 +89,28 @@ public class Cell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
             }
         }
 
+        if (distance == 0)
+            distance = 10000;
+
         for (int i = 0; i < equipment.childCount; i++)
         {
             if (Vector2.Distance(transform.position, equipment.GetChild(i).position) < distance)
             {
                 closestIndexEquipment = i;
                 original = false;
+                eq = true;
                 distance = Vector2.Distance(transform.position, equipment.GetChild(i).position);
             }
         }
 
-        transform.position = cells.GetChild(closestIndex).position;
-
         Dequip();
 
-        if (!original)
+        if (eq)
+            transform.position = cells.GetChild(closestIndex).position;
+        else
+            transform.localPosition = startPos;
+
+        if (!original && eq)
             Equip();
 
         playerInventory.Render();

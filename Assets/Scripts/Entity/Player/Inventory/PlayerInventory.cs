@@ -18,7 +18,6 @@ public class PlayerInventory : MonoBehaviour
 
     public delegate void InventoryEvent();
     public static InventoryEvent ClosedInventory;
-    private int v;
 
     private void Update()
     {
@@ -42,13 +41,11 @@ public class PlayerInventory : MonoBehaviour
     public void Render()
     {
         CheckEquip();
-        
-        int indent = 0;
         for (int i = 0; i < item.Count; i++)
         {
             GameObject el = Instantiate(cell, cells);
             el.GetComponent<Cell>().Init(inventory.transform, equipment, cellsBG, statsPanel, GetComponent<PlayerInventory>(), item[i]);
-            el.transform.position = cellsBG.GetChild(i - indent).position;
+            el.transform.position = cellsBG.GetChild(i+1).position;
             el.transform.SetSiblingIndex(i);
             el.GetComponent<Cell>().destroy += () =>
             {
@@ -78,7 +75,7 @@ public class PlayerInventory : MonoBehaviour
 
     public bool IsHaveSlots()
     {
-        if (item.Count < 8)
+        if (item.Count < cellsBG.childCount-1)
             return true;
         else
             return false;

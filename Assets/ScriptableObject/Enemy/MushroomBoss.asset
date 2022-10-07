@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b3d56799faad9448aa43dd5f1401b3, type: 3}
   m_Name: MushroomBoss
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 22c902bce935000489db46993e960191, type: 3}
+  sprite: {fileID: 21300000, guid: f20f806809349ea4ab867895a3d73e63, type: 3}
   maxHealthPoint: 50
   damage: 10
   attackSpeed: 1

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem effect;
+
     public Color32 color;
 
     public new string tag;
@@ -16,9 +18,11 @@ public class Item : MonoBehaviour
     public float addSpeed;
     public float addJumps;
 
+    [System.Obsolete]
     private void Start()
     {
-        GetComponent<SpriteRenderer>().color = color;
+        GetComponentInChildren<SpriteRenderer>().color = color;
+        effect.startColor = color;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
